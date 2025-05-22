@@ -10,6 +10,7 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  socketId?: string;
   comparePassword: (password: string) => Promise<boolean>;
   SignAccessToken: () => string;
 }
@@ -32,6 +33,9 @@ const UserSchema: Schema<IUser> = new mongoose.Schema(
       type: String,
       minlength: [6, "Password must be at least 6 characters"],
       select: false,
+    },
+    socketId: {
+      type: String,
     },
   },
   { timestamps: true }

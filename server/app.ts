@@ -3,7 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { ErrorMiddleware } from "./middleware/error";
 import dotenv from "dotenv";
-// import userRouter from "./routes/user.route";
+import userRouter from "./routes/user.route";
+import captainRouter from "./routes/captain.route";
 
 export const app = express();
 //config
@@ -27,7 +28,7 @@ app.use(
 );
 
 //routes
-// app.use("/api/v1", userRouter);
+app.use("/api/v1", userRouter, captainRouter);
 
 //testing route
 app.get("/test", (req: Request, res: Response, next: NextFunction) => {

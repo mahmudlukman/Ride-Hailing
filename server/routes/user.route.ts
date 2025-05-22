@@ -1,14 +1,16 @@
-// import express from "express";
-// import {
-//   getLoggedInUser,
-//   getUserById,
-//   updateUser,
-// } from "../controllers/user.controller";
-// import { isAuthenticated } from "../middleware/auth";
-// const userRouter = express.Router();
+import express from "express";
+import {
+  getLoggedInUser,
+  loginUser,
+  logoutUser,
+  registerUser,
+} from "../controllers/user.controller";
+import { isAuthenticated } from "../middleware/auth";
+const userRouter = express.Router();
 
-// userRouter.get("/me", isAuthenticated, getLoggedInUser);
-// userRouter.get("/user/:userId", isAuthenticated, getUserById);
-// userRouter.put("/update-user", isAuthenticated, updateUser);
+userRouter.post("/register-user", registerUser);
+userRouter.post("/login-user", loginUser);
+userRouter.get("/logout-user", isAuthenticated, logoutUser);
+userRouter.get("/me", isAuthenticated, getLoggedInUser);
 
-// export default userRouter;
+export default userRouter;
